@@ -56,4 +56,19 @@ public class ItemsService {
     public void add(Items items){
         mapper.insertSelective(items);
     }
+
+
+    public void update(Items items){
+        mapper.updateByPrimaryKey(items);
+    }
+
+    public  void delete(Integer id){
+        mapper.deleteByPrimaryKey(id);
+    }
+
+    public void deleteByIds(List<Integer> ids){
+        ItemsExample itemsExample = new ItemsExample();
+        itemsExample.createCriteria().andIdIn(ids);
+        mapper.deleteByExample(itemsExample);
+    }
 }

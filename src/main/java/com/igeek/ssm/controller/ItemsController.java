@@ -62,9 +62,47 @@ public class ItemsController {
             }
         }
 
-        //添加商品
-        service.add(items);
-        //为了避免重复提交表单的操作，可以选择重定向，地址栏显示目标地址
-        return "redirect:findAll.action";
+        //添加商品  MultipartFile 实现上传图片
+        @RequestMapping("/add.action")
+        public String add(Items items, MultipartFile file) throws IOException {
+            //上传图片
+            if(file!=null){
+                //获得原始图片名称
+                String oldName = file.getOriginalFilename();
+                System.out.println("oldName = "+oldName);
+                //当前若上传图片
+                if(oldName!=null && oldName.length()>0){
+                    //产生新的图片名称 = 随机数+原图片的后缀
+                    String newName = UUID.randomUUID()+oldName.substring(oldName.lastIndexOf("."));
+
+                    //将此图片上传至本地图片服务器路径
+                    file.transferTo(new File("E:/ssm/day3/temp/"+newName));
+
+                    //将此图片传值到items商品中
+                    items.setPic("/pic/"+newName);
+                }
+            }
+
+            //添加商品
+            service.add(items);
+            //为了避免重复提交表单的操作，可以选择重定向，地址栏显示目标地址
+            return "redirect:findAll.action";
+        }
+
+        public String delete(Integer id){
+            service.delete(id);
+            return "itemsList.jsp";
+        }
+
+        public String deleteAll(List<Integer> ids){
+            service.deleteByIds(ids);
+            return "itemsList.jsp";
+        }
+
+
+        public String update(Items items){
+            service.update(items);
+            return "itemsList.jsp";
+        }
     }
 }

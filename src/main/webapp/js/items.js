@@ -92,4 +92,8 @@ function skipPage(url,myPages) {
         //跳转
         window.location.href=url+"/items/findAll.action?query="+query+"&pageNow="+pageNow;
     }
+
+
+
+
 }
