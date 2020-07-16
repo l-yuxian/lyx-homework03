@@ -94,6 +94,17 @@ function skipPage(url,myPages) {
     }
 
 
+    //通过id集合删除商品
+    function deleteAll(list){
+        var arr=[];//空数组
+        //获得搜索框的值
+        for(var i=0;i<list.size();i++){
+            arr[i] = list[i].id
+        }
+        //跳转到action，进行查询
+        window.location.href=url+"/items/deleteAll.action?ids="+arr;
+    }
+
 
 
 }

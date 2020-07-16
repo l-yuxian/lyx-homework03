@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false" %>
+		 pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,7 +12,7 @@
 <body>
 <div class="container" style="margin-top: 100px">
 	<h2 class="form-group">修改商品</h2>
-	<form id="f" action="" method="post" enctype="multipart/form-data">
+	<form id="f" action="${pageContext.request.contextPath}/items/update.action" method="post" enctype="multipart/form-data">
 		<div class="form-group" hidden="hidden">
 			<label for="id">商品id</label>
 			<input type="text" class="form-control" id="id" placeholder="id" name="id">
@@ -43,17 +43,17 @@
 </div>
 </body>
 <script type="text/javascript">
-	//将文件流以url形式读取，实现图片实时显示：
-	function showPreview(source){
-		var file = source.files[0];
-		if(window.FileReader){
-			var fr = new FileReader();
-			fr.onloadend = function(e){
-				document.getElementById("pic").src=e.target.result;
-			}
-			fr.readAsDataURL(file);
-		}
-	}
+    //将文件流以url形式读取，实现图片实时显示：
+    function showPreview(source){
+        var file = source.files[0];
+        if(window.FileReader){
+            var fr = new FileReader();
+            fr.onloadend = function(e){
+                document.getElementById("pic").src=e.target.result;
+            }
+            fr.readAsDataURL(file);
+        }
+    }
 </script>
 
 </html>

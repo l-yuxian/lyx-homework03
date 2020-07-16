@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false" %>
+		 pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,7 +25,7 @@
 		</div>
 		<div class="col-md-4 col-lg-4">
 			<a href="addItem.jsp" class="btn btn-success">增加商品</a>
-			<input class="btn btn-danger" type="button" value="删除所有" onclick="">
+			<input class="btn btn-danger" type="button" value="删除所有" onclick="deleteAll(${vo.itemsList})">
 		</div>
 	</div>
 	<div class="row" style="margin-top: 50px">
@@ -54,8 +54,8 @@
 						</c:if>
 					</td>
 					<td>
-						<a href="javascript:void(0)" class="btn btn-info" onclick="">修改</a>|
-						<a href="" class="btn btn-danger">删除</a>
+						<a href="editItem.jsp" class="btn btn-info" onclick="">修改</a>|
+						<a href="/items/delete.action?id=${items.id}" class="btn btn-danger">删除</a>
 					</td>
 				</tr>
 			</c:forEach>
